@@ -35,11 +35,12 @@
 // }
 #if defined(ESP8266) || defined(ESP32)
 #include <functional>
-#define callbackFunction std::function<void()> callback
+typedef std::function<void()> callbackFunction;
 #else
-#define callbackFunction void (*callback)(void)
+typedef void (*callbackFunction)(void);
 #endif
-#define parameterizedCallbackFunction void (*callback)(void *)
+typedef void (*parameterizedCallbackFunction)(void *);
+
 class OneButton {
 public:
   // ----- Constructor -----
